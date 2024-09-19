@@ -1,10 +1,13 @@
-pipeline {
+pipeline{
     agent any
-
-    stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
+    stages{
+        stage("verify tooling"){
+            steps{
+                sh '''
+                  docker version 
+                  docker info
+                  docker compose version
+                 '''
             }
         }
     }
